@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
 class Nav extends React.Component {
@@ -15,9 +16,9 @@ class Nav extends React.Component {
 			</div>
 			<div id="navbar" className="collapse navbar-collapse">
 				<ul className="nav navbar-nav">
-					<li className="active"><a href="/#"><img src="home.svg" width="22" height="22" alt="Home" /></a></li>
-					<li><a href="/#" onClick={() => {}}><img src="question-mark.svg" width="22" height="22" alt="About" /></a></li>
-					<li><a href="/#" onClick={() => {}}>Contact</a></li>
+					<li className="active"><a href="#" onClick={() => {this.props.stateFunc(0)}}><img src="home.svg" width="22" height="22" alt="Home" /></a></li>
+					<li><a href="#" onClick={() => {this.props.stateFunc('about')}}><img src="question-mark.svg" width="22" height="22" alt="About" /></a></li>
+					<li><a href="#" onClick={() => {this.props.stateFunc('contact')}}>Contact</a></li>
 				</ul>
 			</div>
 		</div>
