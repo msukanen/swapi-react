@@ -15,7 +15,7 @@ class Nav extends React.Component {
 			</div>
 			<div id="navbar" className="collapse navbar-collapse">
 				<ul className="nav navbar-nav">
-					<li className="active"><a href="/#" onClick={() => {}}><img src="home.svg" width="22" height="22" alt="Home" /></a></li>
+					<li className="active"><a href="/#"><img src="home.svg" width="22" height="22" alt="Home" /></a></li>
 					<li><a href="/#" onClick={() => {}}><img src="question-mark.svg" width="22" height="22" alt="About" /></a></li>
 					<li><a href="/#" onClick={() => {}}>Contact</a></li>
 				</ul>
