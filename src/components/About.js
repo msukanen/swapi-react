@@ -1,6 +1,7 @@
 import { swapi_url } from "../SWAPI"
 
 export const author = <b>Markku &quot;Marsupilami&quot; Sukanen</b>
+export const github = "https://github.com/msukanen/swapi-react"
 
 function About() {return(
     <section>

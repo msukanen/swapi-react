@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import { github } from './About'
 
 class Nav extends React.Component {
     render() {return(
@@ -12,8 +13,7 @@ class Nav extends React.Component {
 					<span className="icon-bar"></span>
 					<span className="icon-bar"></span>
 				</button>
-				<a className="navbar-brand" href="http://github.com/msukanen/swapi-react">
-					{/* <b>Fetch-H#1</b> (SWAPI) */}
+				<a className="navbar-brand" href={`${github}`} target="github-swapi-react">
 					<img src={`${process.env.PUBLIC_URL}/gfx/yoda.gif`} height="64" alt="Fetch-H#1 (SWAPI)"/>
 				</a>
 			</div>
