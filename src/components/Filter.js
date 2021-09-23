@@ -9,23 +9,23 @@ export function filterDroid(elem)  { return elem.gender === 'n/a'    ? elem : fa
  * @returns false if elem didn't meet criteria, otherwise elem.
  */
 export function filterVehicle(elem, ignoreCount){
-    const fIn = document.getElementById('fetchInput')
-    let num = fIn ? fIn.value : undefined
-    if (ignoreCount === undefined && num !== undefined && Number.isInteger(parseInt(num))) {
-        let cbox = document.getElementById('cboxInclDriver')
-        if (cbox && cbox.checked)
-            num = num > 0 ? num-1 : 0
-        return elem.passengers >= num ? elem : false
-    } else return elem
+	const fIn = document.getElementById('fetchInput')
+	let num = fIn ? fIn.value : undefined
+	if (ignoreCount === undefined && num !== undefined && Number.isInteger(parseInt(num))) {
+		let cbox = document.getElementById('cboxInclDriver')
+		if (cbox && cbox.checked)
+			num = num > 0 ? num-1 : 0
+		return elem.passengers >= num ? elem : false
+	} else return elem
 }
 
 export function filterImg(elem, sizePx) {
-    if (elem.data)
-        elem = elem.data
-    return(
-        filterFemale(elem) ? '' :
-        filterMale(elem)   ? <img src={`${process.env.PUBLIC_URL}/gfx/yoda.gif`} width={`${sizePx}`} height={`${sizePx}`} alt="yolo" /> :
-        filterDroid(elem)  ? <img src={`${process.env.PUBLIC_URL}/gfx/droid.png`} width={`${sizePx}`} height={`${sizePx}`} alt="droid" />
-            : <span>IMG N/A<br /></span>
-    )
+	if (elem.data)
+		elem = elem.data
+	return(
+		filterFemale(elem) ? <></> :
+		filterMale(elem)   ? <></> :
+		filterDroid(elem)  ? <></>
+		: <></>
+	)
 }
