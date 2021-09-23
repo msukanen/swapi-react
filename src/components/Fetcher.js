@@ -1,22 +1,7 @@
 import React from "react"
 import Person from "./Person"
 import Vehicle from "./Vehicle"
-
-const url = "https://swapi.dev/api/"
-
-function filterMale(elem) { return elem.gender === 'male' ? elem : false }
-function filterFemale(elem) { return elem.gender === 'female' ? elem : false }
-function filterDroid(elem) { return elem.gender === 'n/a' ? elem : false }
-function filterVehicle(elem) {
-    const fIn = document.getElementById('fetchInput')
-    let num = fIn ? fIn.value : 0
-    if (num !== undefined && Number.isInteger(parseInt(num))) {
-        let cbox = document.getElementById('cboxInclDriver')
-        if (cbox && cbox.checked)
-            num = num > 0 ? num-1 : 0
-        return elem.passengers >= num ? elem : false
-    } else return elem
-}
+import { filterMale, filterFemale, filterDroid, filterVehicle} from './Filter'
 
 class Fetcher extends React.Component {
     constructor(props) {
@@ -24,30 +9,26 @@ class Fetcher extends React.Component {
         this.state = {items:[]}
     }
 
-    static renderPerson(elem) {return <Person data={elem} />}
-
-    static renderVehicle(elem) {return <Vehicle data={elem} />}
-
     render() {
-        async function fetchAny(destination, what, filterFunc, renderFunc) {
-            async function GetThing(what, filterFunc) {
+        async function fetchAny(parent, what, filterFunc, renderFunc) {
+            async function fetchThing(parent, what, filterFunc) {
                 console.log(`Getting ${what}...`)
-                let data = await APICall_swapi(what)
+                let data = await APICall_swapi(parent, what)
                 return filterFunc !== undefined
                      ? data.filter(elem => filterFunc(elem))
                      : data
             }
         
-            const results = await GetThing(what, filterFunc)
+            const results = await fetchThing(parent, what, filterFunc)
             const things = []
             results.forEach( result => things.push({data: result, renderFunc: renderFunc}))
-            destination.setState( {items: things} )
+            parent.setState( {items: things} )
         }
         
-        async function APICall_swapi(args) {
+        async function APICall_swapi(parent, args) {
             if (args === 'males' || args === 'females' || args === 'droids')
-                args = 'people'
-            const response = await fetch(url + args);
+                args = 'people'// male/female/droid are all 'people' in the DB
+            const response = await fetch(parent.props.url + args);
             if (response.ok) {
                 const data = await response.json(); // read response body and parse as JSON
                 return data.results
@@ -57,14 +38,15 @@ class Fetcher extends React.Component {
         }
         
         return(
+            <div id="fetcher">
             <table>
                 <tbody>
                     <tr>
                         <td><input type="text" id="fetchInput"></input></td>
-                        <td><button onClick={() => fetchAny(this, 'droids', filterDroid, Fetcher.renderPerson)}>D</button></td>
-                        <td><button onClick={() => fetchAny(this, 'males', filterMale, Fetcher.renderPerson)}>M</button></td>
-                        <td><button onClick={() => fetchAny(this, 'females', filterFemale, Fetcher.renderPerson)}>F</button></td>
-                        <td><button onClick={() => fetchAny(this, 'vehicles', filterVehicle, Fetcher.renderVehicle)}>V</button></td>
+                        <td><button onClick={() => fetchAny(this, 'droids', filterDroid, Person.create)}>D</button></td>
+                        <td><button onClick={() => fetchAny(this, 'males', filterMale, Person.create)}>M</button></td>
+                        <td><button onClick={() => fetchAny(this, 'females', filterFemale, Person.create)}>F</button></td>
+                        <td><button onClick={() => fetchAny(this, 'vehicles', filterVehicle, Vehicle.create)}>V</button></td>
                     </tr>
                     <tr>
                         <td colSpan="4" style={{textAlign:'left'}}>
@@ -75,6 +57,7 @@ class Fetcher extends React.Component {
                     </tr>
                 </tbody>
             </table>
+            </div>
         )
     }
 }
