@@ -38,7 +38,6 @@ class Fetcher extends React.Component {
         }
         
         return(
-            <div id="fetcher">
             <table>
                 <tbody>
                     <tr>
@@ -57,7 +56,6 @@ class Fetcher extends React.Component {
                     </tr>
                 </tbody>
             </table>
-            </div>
         )
     }
 }

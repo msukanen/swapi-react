@@ -1,7 +1,7 @@
 import React from 'react'
 
 class Nav extends React.Component {
-    render() { return(
+    render() {return(
 	<nav className="navbar navbar-inverse navbar-fixed-top">
 		<div className="container">
 			<div className="navbar-header">
@@ -15,9 +15,9 @@ class Nav extends React.Component {
 			</div>
 			<div id="navbar" className="collapse navbar-collapse">
 				<ul className="nav navbar-nav">
-					<li className="active"><a href="/#"><img src="home.svg" width="22" height="22" alt="Home" /></a></li>
-					<li><a href="/#"><img src="question-mark.svg" width="22" height="22" alt="About" /></a></li>
-					<li><a href="/#">Contact</a></li>
+					<li className="active"><a href="/#" onClick={() => {}}><img src="home.svg" width="22" height="22" alt="Home" /></a></li>
+					<li><a href="/#" onClick={() => {}}><img src="question-mark.svg" width="22" height="22" alt="About" /></a></li>
+					<li><a href="/#" onClick={() => {}}>Contact</a></li>
 				</ul>
 			</div>
 		</div>

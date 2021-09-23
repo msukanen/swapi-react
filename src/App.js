@@ -1,14 +1,13 @@
 import './App.css'
 import Fetcher from './components/Fetcher'
 import Nav from './components/Nav'
-
-const url = "https://swapi.dev/api/"
+import { swapi_url } from './SWAPI'
 
 function App() {
 	return (
 		<div className="App">
 			<Nav />
-			<Fetcher url={url}/>
+			<Fetcher url={swapi_url}/>
 		</div>
 	)
 }
