@@ -1,18 +1,24 @@
-import React from "react"
-import Person from "./Person"
-import Vehicle from "./Vehicle"
-import { filterMale, filterFemale, filterDroid, filterVehicle, filterImg} from './Filter'
+import React from 'react'
+import Person from './Person'
+import Vehicle from './Vehicle'
+import {
+    filterMale,
+    filterFemale,
+    filterDroid,
+    filterVehicle,
+    filterImg
+} from './Filter'
 
 class Fetcher extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {items:[]}
+        this.state = { items:[] }
     }
 
     render() {
         async function fetchAny(parent, what, filterFunc, renderFunc) {
             async function fetchThing(parent, what, filterFunc) {
-                console.log(`Getting ${what}...`)
+                // console.log(`Getting ${what}...`)
                 let data = await APICall_swapi(parent, what)
                 return filterFunc !== undefined
                      ? data.filter(elem => filterFunc(elem))
@@ -20,7 +26,7 @@ class Fetcher extends React.Component {
             }
         
             const results = await fetchThing(parent, what, filterFunc)
-            console.log(`Got ${what}...`)
+            // console.log(`Got ${what}...`)
             const things = []
             results.forEach( result => things.push({data: result, renderFunc: renderFunc}))
             parent.setState( {items: things} )
@@ -52,8 +58,8 @@ class Fetcher extends React.Component {
                         <td colSpan="4" style={{textAlign:'left'}}>
                             <div id="resultArea">
                                 {this.state.items.length > 0 ? filterImg(this.state.items[0], 48) : ''}
-                                {this.state.items.map((item) => <>{item.renderFunc ? item.renderFunc(item.data) : item.data}<br /></>)
-                            }</div>
+                                {this.state.items.map((item) => <>{item.renderFunc ? item.renderFunc(item.data) : item.data}<br /></>)}
+                            </div>
                         </td>
                     </tr>
                 </tbody>
