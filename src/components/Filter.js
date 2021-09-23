@@ -23,9 +23,9 @@ export function filterImg(elem, sizePx) {
 	if (elem.data)
 		elem = elem.data
 	return(
-		filterFemale(elem) ? <></> :
-		filterMale(elem)   ? <></> :
-		filterDroid(elem)  ? <></>
-		: <></>
+		filterFemale(elem) ? <h4>&#9792;</h4> :
+		filterMale(elem)   ? <h4>&#9794;</h4> :
+		filterDroid(elem)  ? <h4><sup>In</sup>famous Droids</h4>
+		: <h4><img src={`${process.env.PUBLIC_URL}/gfx/car.jpg`} width="56" alt="Brm-brm!"/></h4>
 	)
 }

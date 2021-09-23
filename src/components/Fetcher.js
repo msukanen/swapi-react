@@ -44,14 +44,14 @@ class Fetcher extends React.Component {
                     <tr>
                         <td><input type="text" id="fetchInput"></input></td>
                         <td><button onClick={() => fetchAny(this, 'droids', filterDroid, Person.create)}>D</button></td>
-                        <td><button onClick={() => fetchAny(this, 'males', filterMale, Person.create)}>M</button></td>
-                        <td><button onClick={() => fetchAny(this, 'females', filterFemale, Person.create)}>F</button></td>
+                        <td><button onClick={() => fetchAny(this, 'males', filterMale, Person.create)}>&#9794;</button></td>
+                        <td><button onClick={() => fetchAny(this, 'females', filterFemale, Person.create)}>&#9792;</button></td>
                         <td><button onClick={() => fetchAny(this, 'vehicles', filterVehicle, Vehicle.create)}>V</button></td>
                     </tr>
                     <tr>
                         <td colSpan="4" style={{textAlign:'left'}}>
                             <div id="resultArea">
-                                {this.state.items.length > 0 ? filterImg(this.state.items[0], 48) : ''}<br />
+                                {this.state.items.length > 0 ? filterImg(this.state.items[0], 48) : ''}
                                 {this.state.items.map((item) => <>{item.renderFunc ? item.renderFunc(item.data) : item.data}<br /></>)
                             }</div>
                         </td>
