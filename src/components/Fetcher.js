@@ -69,7 +69,7 @@ class Fetcher extends React.Component {
                     <tr>
                         <td colSpan="4" style={{textAlign:'left'}}>
                             <div id="resultArea">{
-                                this.state.items.map((item) => <>{item.renderFunc(item.data)}<br /></>)
+                                this.state.items.map((item) => <>{item.renderFunc ? item.renderFunc(item.data) : item.data}<br /></>)
                             }</div>
                         </td>
                     </tr>
