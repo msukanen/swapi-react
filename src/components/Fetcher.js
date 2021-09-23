@@ -1,6 +1,7 @@
 import React from 'react'
 import Person from './Person'
 import Vehicle from './Vehicle'
+import Planet from './Planet'
 import {
     filterMale,
     filterFemale,
@@ -20,7 +21,7 @@ class Fetcher extends React.Component {
             async function fetchThing(parent, what, filterFunc) {
                 // console.log(`Getting ${what}...`)
                 let data = await APICall_swapi(parent, what)
-                return filterFunc !== undefined
+                return filterFunc !== null && filterFunc !== undefined
                      ? data.filter(elem => filterFunc(elem))
                      : data
             }
@@ -53,6 +54,7 @@ class Fetcher extends React.Component {
                         <td><button onClick={() => fetchAny(this, 'males', filterMale, Person.create)}>&#9794;</button></td>
                         <td><button onClick={() => fetchAny(this, 'females', filterFemale, Person.create)}>&#9792;</button></td>
                         <td><button onClick={() => fetchAny(this, 'vehicles', filterVehicle, Vehicle.create)}>V</button></td>
+                        <td><button onClick={() => fetchAny(this, 'planets', null, Planet.create)}>P</button></td>
                     </tr>
                     <tr>
                         <td colSpan="4" style={{textAlign:'left'}}>

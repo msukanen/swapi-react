@@ -5,9 +5,7 @@ class Vehicle extends React.Component {
         return <span>{this.props.data.name}</span>
     }
 
-    static create(data) {
-        return <Vehicle data={data}/>
-    }
+    static create(data) {return <Vehicle data={data}/>}
 }
 
 export default Vehicle

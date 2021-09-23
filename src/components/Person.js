@@ -5,9 +5,7 @@ class Person extends React.Component {
         return <span>{this.props.data.name}</span>
     }
 
-    static create(data) {
-        return <Person data={data}/>
-    }
+    static create(data) {return <Person data={data}/>}
 }
 
 export default Person
