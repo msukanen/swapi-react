@@ -12,7 +12,10 @@ class Nav extends React.Component {
 					<span className="icon-bar"></span>
 					<span className="icon-bar"></span>
 				</button>
-				<a className="navbar-brand" href="http://github.com/msukanen/swapi-react"><b>Fetch-H#1</b> (SWAPI)</a>
+				<a className="navbar-brand" href="http://github.com/msukanen/swapi-react">
+					{/* <b>Fetch-H#1</b> (SWAPI) */}
+					<img src={`${process.env.PUBLIC_URL}/gfx/yoda.gif`} height="64" alt="Fetch-H#1 (SWAPI)"/>
+				</a>
 			</div>
 			<div id="navbar" className="collapse navbar-collapse">
 				<ul className="nav navbar-nav">

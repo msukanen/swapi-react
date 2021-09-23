@@ -1,7 +1,14 @@
+import { author } from "./About"
+
+export const email = <>classified@no-email.spam</>
+
 function Contact() {return(
     <div id="contact">
-        Contacting the author of this &quot;App&quot; can be done via
-        email&mdash;address not enclosed&hellip;
+        <section>
+            <h1>Contact</h1>
+            <p>{author}</p>
+            <p>e-mail: <code>{email}</code></p>
+        </section>
     </div>
 )}
 

@@ -1,7 +1,7 @@
 import React from "react"
 import Person from "./Person"
 import Vehicle from "./Vehicle"
-import { filterMale, filterFemale, filterDroid, filterVehicle} from './Filter'
+import { filterMale, filterFemale, filterDroid, filterVehicle, filterImg} from './Filter'
 
 class Fetcher extends React.Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class Fetcher extends React.Component {
             }
         
             const results = await fetchThing(parent, what, filterFunc)
+            console.log(`Got ${what}...`)
             const things = []
             results.forEach( result => things.push({data: result, renderFunc: renderFunc}))
             parent.setState( {items: things} )
@@ -50,7 +51,7 @@ class Fetcher extends React.Component {
                     <tr>
                         <td colSpan="4" style={{textAlign:'left'}}>
                             <div id="resultArea">
-                                {this.state.items ? this.state.items.length > 0 ? this.state.items[0].img : '' : ''}
+                                {this.state.items.length > 0 ? filterImg(this.state.items[0], 48) : ''}<br />
                                 {this.state.items.map((item) => <>{item.renderFunc ? item.renderFunc(item.data) : item.data}<br /></>)
                             }</div>
                         </td>
